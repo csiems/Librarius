@@ -1,4 +1,4 @@
-package com.epicodus.librarius;
+package com.epicodus.librarius.fragments;
 
 
 import android.content.res.Resources;
@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.epicodus.librarius.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

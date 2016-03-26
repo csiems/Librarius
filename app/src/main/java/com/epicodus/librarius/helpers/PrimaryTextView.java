@@ -1,4 +1,4 @@
-package com.epicodus.librarius;
+package com.epicodus.librarius.helpers;
 
 /**
  * Created by Guest on 3/26/16.
