@@ -55,6 +55,8 @@ public class SearchFragment extends DialogFragment implements View.OnClickListen
         if (v == mSubmitSearchButton) {
             Toast.makeText(getActivity(), "Submitting " + mIsbnNumberEditText.getText() + " to Google", Toast.LENGTH_LONG).show();
             dismiss();
+
+            //will bundle information and pass that to the bibliographyfragment
         }
     }
 }
