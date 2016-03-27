@@ -28,7 +28,7 @@
                 android:id="@+id/isbnNumberEditText"
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/colorAccent"
-                android:hint="@string/isbnHint"
+                android:hint="@string/searchHint"
                 android:inputType="number"
                 android:layout_width="fill_parent"
                 android:linksClickable="true"/>
