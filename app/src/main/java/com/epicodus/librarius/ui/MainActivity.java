@@ -3,6 +3,8 @@ package com.epicodus.librarius.ui;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
+
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -10,6 +12,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.epicodus.librarius.fragments.BarcodeScannerFragment;
 import com.epicodus.librarius.fragments.ManualEntryFormFragment;
 import com.epicodus.librarius.R;
 import com.epicodus.librarius.fragments.BibliographyFragment;
@@ -69,21 +72,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if (v == mScanButton) {
-            Snackbar.make(v, "Imagine a Scanning Window popping up now", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show();
+            launchBarcodeScannerFragment();
         }
         if (v == mSearchButton) {
             Snackbar.make(v, "Imagine a Search Form popping up now", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
         }
         if (v == mManualEntryButton) {
-            showManualEntryFormFragment();
+            launchManualEntryFormFragment();
         }
     }
 
-    private void showManualEntryFormFragment() {
+    private void launchBarcodeScannerFragment() {
         FragmentManager fm = getSupportFragmentManager();
-        ManualEntryFormFragment manualEntryForm = ManualEntryFormFragment.newInstance("Some Title");
+        BarcodeScannerFragment barcodeScanner = BarcodeScannerFragment.newInstance();
+        barcodeScanner.show(fm, "fragment_barcode_scanner");
+    }
+
+    private void launchManualEntryFormFragment() {
+        FragmentManager fm = getSupportFragmentManager();
+        ManualEntryFormFragment manualEntryForm = ManualEntryFormFragment.newInstance();
         manualEntryForm.show(fm, "fragment_manual_entry_form");
     }
 }

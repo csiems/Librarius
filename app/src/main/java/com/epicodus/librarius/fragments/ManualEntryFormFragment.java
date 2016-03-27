@@ -37,7 +37,7 @@ public class ManualEntryFormFragment extends DialogFragment implements View.OnCl
         // Required empty public constructor
     }
 
-    public static ManualEntryFormFragment newInstance(String title) {
+    public static ManualEntryFormFragment newInstance() {
         return new ManualEntryFormFragment();
     }
 
