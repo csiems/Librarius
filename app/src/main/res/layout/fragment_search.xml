@@ -1,0 +1,49 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/searchForm"
+    android:layout_width="wrap_content" android:layout_height="wrap_content"
+    android:layout_gravity="center" android:orientation="vertical"  >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/searchScrollView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:fillViewport="false">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/searchLinearLayout">
+            <com.epicodus.librarius.helpers.BoldTextView
+                android:id="@+id/searchInstructionsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/searchInstructionsTitle"
+                android:textSize="10pt"
+                android:textAlignment="center" />
+            <com.epicodus.librarius.helpers.PrimaryEditText
+                android:id="@+id/isbnNumberEditText"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/colorAccent"
+                android:hint="@string/isbnHint"
+                android:inputType="number"
+                android:layout_width="fill_parent"
+                android:linksClickable="true"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Submit"
+                android:id="@+id/submitSearchButton"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:background="@color/colorPrimaryDark" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

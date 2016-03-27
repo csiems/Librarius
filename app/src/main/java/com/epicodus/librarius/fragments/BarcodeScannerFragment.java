@@ -44,10 +44,10 @@ public class BarcodeScannerFragment extends DialogFragment implements ZXingScann
         mScannerView.startCamera();
     }
 
-
-
     @Override
     public void handleResult(Result rawResult) {
+        Toast.makeText(getActivity(), "Contents = " + rawResult.toString() +
+                "   |   Format = " + rawResult.getBarcodeFormat().toString(), Toast.LENGTH_SHORT).show();
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override

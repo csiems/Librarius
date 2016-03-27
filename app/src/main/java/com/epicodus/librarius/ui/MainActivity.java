@@ -16,6 +16,7 @@ import com.epicodus.librarius.fragments.BarcodeScannerFragment;
 import com.epicodus.librarius.fragments.ManualEntryFormFragment;
 import com.epicodus.librarius.R;
 import com.epicodus.librarius.fragments.BibliographyFragment;
+import com.epicodus.librarius.fragments.SearchFragment;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -75,8 +76,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             launchBarcodeScannerFragment();
         }
         if (v == mSearchButton) {
-            Snackbar.make(v, "Imagine a Search Form popping up now", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show();
+            launchSearchFragment();
         }
         if (v == mManualEntryButton) {
             launchManualEntryFormFragment();
@@ -87,6 +87,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         FragmentManager fm = getSupportFragmentManager();
         BarcodeScannerFragment barcodeScanner = BarcodeScannerFragment.newInstance();
         barcodeScanner.show(fm, "fragment_barcode_scanner");
+    }
+
+    private void launchSearchFragment() {
+        FragmentManager fm = getSupportFragmentManager();
+        SearchFragment search = SearchFragment.newInstance();
+        search.show(fm, "fragment_search");
     }
 
     private void launchManualEntryFormFragment() {
