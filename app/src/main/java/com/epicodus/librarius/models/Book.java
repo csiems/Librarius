@@ -1,75 +1,45 @@
 package com.epicodus.librarius.models;
 
+import java.util.ArrayList;
+
 /**
  * Created by Guest on 3/26/16.
  */
 public class Book {
-    private String mAuthorFirstName;
-    private String mAuthorLastName;
+    private ArrayList<String> mAuthorData;
     private String mBookTitle;
-    private String mBookVol;
-    private String mBookEd;
-    private String mBookSeries;
-    private String mPublisher;
-    private String mBookCity;
-    private String mBookYear;
+    private String mEditionInfo;
+    private String mPublisherText;
 
-    public Book(String authorFirstName, String authorLastName, String bookTitle, String bookVol, String bookEd, String bookSeries, String publisher, String bookCity, String bookYear) {
-        this.mAuthorFirstName = authorFirstName;
-        this.mAuthorLastName = authorLastName;
+    public Book(ArrayList<String> authorData, String bookTitle, String editionInfo, String publisherText) {
+        this.mAuthorData = authorData;
         this.mBookTitle = bookTitle;
-        this.mBookVol = bookVol;
-        this.mBookEd = bookEd;
-        this.mBookSeries = bookSeries;
-        this.mPublisher = publisher;
-        this.mBookCity = bookCity;
-        this.mBookYear = bookYear;
+        this.mEditionInfo = editionInfo;
+        this.mPublisherText = publisherText;
     }
 
-    public Book(String authorFirstName, String authorLastName, String bookTitle, String publisher, String bookCity, String bookYear) {
-        this.mAuthorFirstName = authorFirstName;
-        this.mAuthorLastName = authorLastName;
+    public Book(ArrayList<String> authorData, String bookTitle, String publisherText) {
+        this.mAuthorData = authorData;
         this.mBookTitle = bookTitle;
-        this.mPublisher = publisher;
-        this.mBookCity = bookCity;
-        this.mBookYear = bookYear;
+        this.mPublisherText = publisherText;
     }
 
 
 
-    public String getAuthorFirstName() {
-        return mAuthorFirstName;
-    }
-
-    public String getAuthorLastName() {
-        return mAuthorLastName;
+    public ArrayList<String> getAuthorData() {
+        return mAuthorData;
     }
 
     public String getBookTitle() {
         return mBookTitle;
     }
 
-    public String getBookVol() {
-        return mBookVol;
-    }
-
-    public String getBookEd() {
-        return mBookEd;
-    }
-
-    public String getBookSeries() {
-        return mBookSeries;
+    public String getEditionInfo() {
+        return mEditionInfo;
     }
 
     public String getPublisher() {
-        return mPublisher;
+        return mPublisherText;
     }
 
-    public String getBookCity() {
-        return mBookCity;
-    }
-
-    public String getBookYear() {
-        return mBookYear;
-    }
 }

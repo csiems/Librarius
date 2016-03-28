@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Librarius</string>
     <string name="action_settings">Settings</string>
-    <string name="API_KEY">AIzaSyDaF5_9fL4sD4jXtX8uo8i4x-l48frD124</string>
+    <string name="API_KEY">85NAH24C</string>
 
     <!--Manual Entry Form-->
     <string name="instructionsTitle">Enter your source information in the following fields:</string>
