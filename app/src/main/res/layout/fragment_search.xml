@@ -25,11 +25,10 @@
                 android:textSize="10pt"
                 android:textAlignment="center" />
             <com.epicodus.librarius.helpers.PrimaryEditText
-                android:id="@+id/isbnNumberEditText"
+                android:id="@+id/queryEditText"
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/colorAccent"
                 android:hint="@string/searchHint"
-                android:inputType="number"
                 android:layout_width="fill_parent"
                 android:linksClickable="true"/>
 

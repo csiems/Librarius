@@ -22,7 +22,7 @@ import butterknife.ButterKnife;
  */
 public class SearchFragment extends DialogFragment implements View.OnClickListener {
     @Bind(R.id.submitSearchButton) Button mSubmitSearchButton;
-    @Bind(R.id.isbnNumberEditText) EditText mIsbnNumberEditText;
+    @Bind(R.id.queryEditText) EditText mQueryEditText;
 
     public SearchFragment() {
         // Required empty public constructor
@@ -53,10 +53,16 @@ public class SearchFragment extends DialogFragment implements View.OnClickListen
     @Override
     public void onClick(View v) {
         if (v == mSubmitSearchButton) {
-            Toast.makeText(getActivity(), "Submitting " + mIsbnNumberEditText.getText() + " to Google", Toast.LENGTH_LONG).show();
+            BibliographyFragment bibliographyFragment = new BibliographyFragment();
+            Bundle args = new Bundle();
+            args.putString("query", mQueryEditText.getText().toString());
+            bibliographyFragment.setArguments(args);
             dismiss();
-
-            //will bundle information and pass that to the bibliographyfragment
+            getFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.main_content_layout, bibliographyFragment)
+                    .addToBackStack(null)
+                    .commit();
         }
     }
 }

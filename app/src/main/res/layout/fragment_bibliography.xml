@@ -6,36 +6,29 @@
     android:id="@+id/bibliographyLayout"
     android:background="@color/bright_foreground_material_dark">
 
-        <ScrollView
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.epicodus.librarius.helpers.BoldTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:id="@+id/bibliographyTextView"
+            android:text="Bibliography"
+            android:textAlignment="center"
+            android:textSize="40sp"/>
+
+        <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/bibliographyScrollView"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:id="@+id/bibliographyRecyclerView"
+            android:layout_below="@+id/bibliographyTextView">
 
+        </android.support.v7.widget.RecyclerView>
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <com.epicodus.librarius.helpers.BoldTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="Bibliography"
-                    android:textAlignment="center"
-                    android:textSize="40sp"/>
-
-                <com.epicodus.librarius.helpers.PrimaryTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:id="@+id/bibliographyTextView"
-                    android:text="Enter your sources in using the buttons on the right"
-                    android:textSize="20sp"/>
-            </LinearLayout>
-        </ScrollView>
+    </RelativeLayout>
 
 </FrameLayout>
