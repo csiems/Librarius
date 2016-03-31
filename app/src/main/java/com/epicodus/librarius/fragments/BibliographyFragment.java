@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.epicodus.librarius.GoogleService;
@@ -33,7 +34,7 @@ import okhttp3.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BibliographyFragment extends DialogFragment {
+public class BibliographyFragment extends Fragment {
     @Bind(R.id.bibliographyRecyclerView) RecyclerView mRecyclerView;
     private BookListAdapter mAdapter;
     public ArrayList<Book> mBooks = new ArrayList<>();
@@ -53,14 +54,42 @@ public class BibliographyFragment extends DialogFragment {
         View view = inflater.inflate(R.layout.fragment_bibliography, container, false);
         ButterKnife.bind(this, view);
         Bundle bundle = getArguments();
+
         if (bundle == null) {
             return view;
-        } else if (bundle.getString("query") == null) {
+        } else if (bundle.getString("query") != null) {
             String query = bundle.getString("query");
             getBooks(query);
             return view;
         }
         return view;
+    }
+
+    private void getBooks(String query) {
+        final ISBNDBService isbnDbService = new ISBNDBService(getContext());
+
+        isbnDbService.findBooks(query, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                mBooks = isbnDbService.processResults(response);
+
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mAdapter = new BookListAdapter(getActivity().getApplicationContext(), mBooks);
+                        mRecyclerView.setAdapter(mAdapter);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+                        mRecyclerView.setLayoutManager(layoutManager);
+                        mRecyclerView.setHasFixedSize(true);
+                    }
+                });
+            }
+        });
     }
 //
 //
@@ -82,32 +111,6 @@ public class BibliographyFragment extends DialogFragment {
 //        return view;
 //    }
 
-    private void getBooks(String query) {
-        final ISBNDBService isbnDbService = new ISBNDBService(getActivity());
 
-        isbnDbService.searchBooks(query, new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) {
-                mBooks = isbnDbService.processResults(response);
-
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        mAdapter = new BookListAdapter(getContext(), mBooks);
-                        mRecyclerView.setAdapter(mAdapter);
-                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
-
-                        mRecyclerView.setLayoutManager(layoutManager);
-                        mRecyclerView.setHasFixedSize(true);
-                    }
-                });
-            }
-        });
-    }
 
 }

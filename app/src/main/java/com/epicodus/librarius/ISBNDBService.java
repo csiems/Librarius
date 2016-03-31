@@ -1,6 +1,7 @@
 package com.epicodus.librarius;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.epicodus.librarius.models.Book;
 
@@ -8,6 +9,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import okhttp3.Call;
@@ -27,7 +29,7 @@ public class ISBNDBService {
         this.mContext = context;
     }
 
-    public void searchBooks(String searchTerm, Callback callback) {
+    public void findBooks(String searchTerm, Callback callback) {
         String API_KEY = mContext.getString(R.string.API_KEY);
 
         OkHttpClient client = new OkHttpClient.Builder().build();
@@ -47,7 +49,7 @@ public class ISBNDBService {
     public ArrayList<Book> processResults(Response response) {
         ArrayList<Book> books = new ArrayList<>();
         try {
-            String jsonData = response.body().toString();
+            String jsonData = response.body().string();
             if (response.isSuccessful()) {
                 JSONObject responseJSON = new JSONObject(jsonData);
                 JSONArray dataJSON = responseJSON.getJSONArray("data");
@@ -70,6 +72,8 @@ public class ISBNDBService {
                 }
             }
         } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return books;
