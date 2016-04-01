@@ -51,14 +51,14 @@ public class BarcodeScannerFragment extends DialogFragment implements ZXingScann
 
     @Override
     public void handleResult(Result rawResult) {
-        BibliographyFragment bibliographyFragment = new BibliographyFragment();
+        SearchDisplayFragment searchDisplayFragment = new SearchDisplayFragment();
         Bundle args = new Bundle();
         args.putString("query", rawResult.toString());
-        bibliographyFragment.setArguments(args);
+        searchDisplayFragment.setArguments(args);
         dismiss();
         getFragmentManager()
                 .beginTransaction()
-                .replace(R.id.main_content_layout, bibliographyFragment)
+                .replace(R.id.main_content_layout, searchDisplayFragment)
                 .addToBackStack(null)
                 .commit();
 

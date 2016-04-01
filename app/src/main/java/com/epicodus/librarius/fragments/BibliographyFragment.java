@@ -81,10 +81,6 @@ public class BibliographyFragment extends Fragment {
                             String response = "";
                             Log.d("Title: ", book.getBookTitle());
                             response += book.getBookTitle();
-                            ArrayList<String> authorData = book.getAuthorData();
-                                                        for (String author : authorData) {
-                                Log.d("Author: ", author);
-                            }
 
                             Toast.makeText(getActivity(), "Your book is " + response, Toast.LENGTH_SHORT).show();
 

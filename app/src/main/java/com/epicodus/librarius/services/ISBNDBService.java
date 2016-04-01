@@ -57,11 +57,15 @@ public class ISBNDBService {
                 for (int i = 0; i < dataJSON.length(); i++) {
                     JSONObject bookJSON = dataJSON.getJSONObject(i);
 
-                    ArrayList<String> authorData = new ArrayList<>();
+                    ArrayList<String> authorArray = new ArrayList<>();
                     JSONArray authorNamesJSON = bookJSON.getJSONArray("author_data");
                     for (int y = 0; y < authorNamesJSON.length(); y++) {
                         String author = authorNamesJSON.getJSONObject(y).getString("name");
-                        authorData.add(author);
+                        authorArray.add(author);
+                    }
+                    String authorData = "";
+                    for (String author : authorArray) {
+                        authorData += author + "\t";
                     }
 
                     String bookTitle = bookJSON.getString("title");
