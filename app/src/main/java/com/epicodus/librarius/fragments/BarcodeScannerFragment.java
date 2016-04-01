@@ -1,8 +1,11 @@
 package com.epicodus.librarius.fragments;
 
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -22,6 +25,7 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 public class BarcodeScannerFragment extends DialogFragment implements ZXingScannerView.ResultHandler {
     private ZXingScannerView mScannerView;
 
+
     public BarcodeScannerFragment() {
         // Required empty public constructor
     }
@@ -34,6 +38,7 @@ public class BarcodeScannerFragment extends DialogFragment implements ZXingScann
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mScannerView = new ZXingScannerView(getActivity());
+
         return mScannerView;
     }
 
@@ -46,7 +51,6 @@ public class BarcodeScannerFragment extends DialogFragment implements ZXingScann
 
     @Override
     public void handleResult(Result rawResult) {
-
         BibliographyFragment bibliographyFragment = new BibliographyFragment();
         Bundle args = new Bundle();
         args.putString("query", rawResult.toString());

@@ -1,8 +1,9 @@
-package com.epicodus.librarius;
+package com.epicodus.librarius.services;
 
 import android.content.Context;
 import android.util.Log;
 
+import com.epicodus.librarius.R;
 import com.epicodus.librarius.models.Book;
 
 import org.json.JSONArray;

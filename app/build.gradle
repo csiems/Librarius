@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
@@ -34,5 +35,6 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.1.2'
     compile 'oauth.signpost:signpost-core:1.2.1.2'
     compile 'com.android.support:recyclerview-v7:+'
+    compile 'com.firebase:firebase-client-android:2.3.1'
 
 }
