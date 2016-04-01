@@ -2,14 +2,20 @@ package com.epicodus.librarius.adapters;
 
 
 import android.content.Context;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.epicodus.librarius.R;
+import com.epicodus.librarius.fragments.BarcodeScannerFragment;
+import com.epicodus.librarius.fragments.BibliographyFragment;
 import com.epicodus.librarius.models.Book;
+import com.epicodus.librarius.ui.MainActivity;
 
 import java.util.ArrayList;
 
@@ -53,11 +59,19 @@ public class SearchDisplayListAdapter extends RecyclerView.Adapter<SearchDisplay
         @Bind(R.id.searchDisplayPublisherTextView) TextView mSearchDisplayPublisherTextView;
         private Context mContext;
 
-
         public SearchDisplayViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();
+            ButterKnife.bind(this, itemView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    //int itemPosition = getLayoutPosition();
+                    //TODO: save to firebase
+                    Toast.makeText(mContext, "You did it!", Toast.LENGTH_LONG).show();
+                }
+            });
         }
 
         public void bindBook(Book book) {

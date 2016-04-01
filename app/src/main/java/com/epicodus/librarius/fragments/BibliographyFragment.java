@@ -47,74 +47,8 @@ public class BibliographyFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_bibliography, container, false);
         ButterKnife.bind(this, view);
-        Bundle bundle = getArguments();
-
-        if (bundle == null) {
-            return view;
-        } else if (bundle.getString("query") != null) {
-            String query = bundle.getString("query");
-            getBooks(query);
-            return view;
-        }
+        //TODO: pull items from firebase
         return view;
     }
-
-    private void getBooks(String query) {
-        final ISBNDBService isbnDbService = new ISBNDBService(getContext());
-
-        isbnDbService.findBooks(query, new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
-            }
-
-            @Override
-            public void onResponse(Call call, final Response response) throws IOException {
-                mBooks = isbnDbService.processResults(response);
-
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        mAdapter = new BookListAdapter(getActivity().getApplicationContext(), mBooks);
-                        mRecyclerView.setAdapter(mAdapter);
-                        for (Book book : mBooks) {
-                            String response = "";
-                            Log.d("Title: ", book.getBookTitle());
-                            response += book.getBookTitle();
-
-                            Toast.makeText(getActivity(), "Your book is " + response, Toast.LENGTH_SHORT).show();
-
-
-
-                        }
-//                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-//                        mRecyclerView.setLayoutManager(layoutManager);
-//                        mRecyclerView.setHasFixedSize(true);
-                    }
-                });
-            }
-        });
-    }
-//
-//
-//            String bibliography = "";
-////
-////            if (bookVol.equals("")) {
-////                bibliography = String.format(res.getString(R.string.bibliographyBookStandard), authorLastName, authorFirstName, bookTitle, bookCity, publisher, bookYear);
-////            } else {
-////                bibliography = String.format(res.getString(R.string.bibliographyBookAdvanced), authorLastName, authorFirstName, bookTitle, bookEd, bookVol, bookCity, publisher, bookYear, bookSeries);
-////            }
-//
-//            bibliographyTextView.setText(bibliography);
-//
-//            return view;
-//        } else {
-//            String searchTerm = bundle.getString("searchTerm");
-//            searchBooks(searchTerm);
-//        }
-//        return view;
-//    }
-
-
-
 }
+

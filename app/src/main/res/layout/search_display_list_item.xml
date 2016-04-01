@@ -13,7 +13,9 @@
         android:layout_width="match_parent"
         android:background="#ffffff"
         android:layout_height="match_parent"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:id="@+id/searchDisplayLinearLayout"
+        >
 
         <com.epicodus.librarius.helpers.BoldTextView
             android:layout_width="wrap_content"
