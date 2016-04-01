@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="100dp"
+    android:layout_margin="2dp"
+    >
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:background="#ffffff"
+        android:layout_height="match_parent"
+        android:padding="10dp">
+
+        <com.epicodus.librarius.helpers.BoldTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/searchDisplayTitleTextView"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="Book Title"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginBottom="4dp"
+            />
+
+        <com.epicodus.librarius.helpers.PrimaryTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Author Name(s)"
+            android:id="@+id/searchDisplayAuthorTextView"
+            android:layout_margin="3dp"
+            />
+
+        <com.epicodus.librarius.helpers.PrimaryTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Publisher Info"
+            android:id="@+id/searchDisplayPublisherTextView"
+            android:layout_margin="3dp"
+            />
+
+
+    </LinearLayout>
+</LinearLayout>
