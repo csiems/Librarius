@@ -53,14 +53,14 @@ public class SearchFragment extends DialogFragment implements View.OnClickListen
     @Override
     public void onClick(View v) {
         if (v == mSubmitSearchButton) {
-            BibliographyFragment bibliographyFragment = new BibliographyFragment();
+            SearchDisplayFragment searchDisplayFragment = new SearchDisplayFragment();
             Bundle args = new Bundle();
             args.putString("query", mQueryEditText.getText().toString());
-            bibliographyFragment.setArguments(args);
+            searchDisplayFragment.setArguments(args);
             dismiss();
             getFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.main_content_layout, bibliographyFragment)
+                    .replace(R.id.main_content_layout, searchDisplayFragment)
                     .addToBackStack(null)
                     .commit();
         }
