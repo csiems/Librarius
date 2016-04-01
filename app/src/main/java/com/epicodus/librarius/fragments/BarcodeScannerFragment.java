@@ -57,8 +57,7 @@ public class BarcodeScannerFragment extends DialogFragment implements ZXingScann
                 .replace(R.id.main_content_layout, bibliographyFragment)
                 .addToBackStack(null)
                 .commit();
-        Toast.makeText(getActivity(), "Contents = " + rawResult.toString() +
-                "   |   Format = " + rawResult.getBarcodeFormat().toString(), Toast.LENGTH_SHORT).show();
+
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override

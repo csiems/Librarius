@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.epicodus.librarius.GoogleService;
 import com.epicodus.librarius.ISBNDBService;
@@ -84,7 +85,18 @@ public class BibliographyFragment extends Fragment {
                         mAdapter = new BookListAdapter(getActivity().getApplicationContext(), mBooks);
                         mRecyclerView.setAdapter(mAdapter);
                         for (Book book : mBooks) {
+                            String response = "";
                             Log.d("Title: ", book.getBookTitle());
+                            response += book.getBookTitle();
+                            ArrayList<String> authorData = book.getAuthorData();
+                                                        for (String author : authorData) {
+                                Log.d("Author: ", author);
+                            }
+
+                            Toast.makeText(getActivity(), "Your book is " + response, Toast.LENGTH_SHORT).show();
+
+
+
                         }
 //                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
 //                        mRecyclerView.setLayoutManager(layoutManager);
