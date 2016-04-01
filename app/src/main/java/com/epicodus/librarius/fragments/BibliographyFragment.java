@@ -75,7 +75,7 @@ public class BibliographyFragment extends Fragment {
             }
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
+            public void onResponse(Call call, final Response response) throws IOException {
                 mBooks = isbnDbService.processResults(response);
 
                 getActivity().runOnUiThread(new Runnable() {
@@ -83,9 +83,12 @@ public class BibliographyFragment extends Fragment {
                     public void run() {
                         mAdapter = new BookListAdapter(getActivity().getApplicationContext(), mBooks);
                         mRecyclerView.setAdapter(mAdapter);
-                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-                        mRecyclerView.setLayoutManager(layoutManager);
-                        mRecyclerView.setHasFixedSize(true);
+                        for (Book book : mBooks) {
+                            Log.d("Title: ", book.getBookTitle());
+                        }
+//                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+//                        mRecyclerView.setLayoutManager(layoutManager);
+//                        mRecyclerView.setHasFixedSize(true);
                     }
                 });
             }

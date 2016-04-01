@@ -46,6 +46,17 @@ public class BarcodeScannerFragment extends DialogFragment implements ZXingScann
 
     @Override
     public void handleResult(Result rawResult) {
+
+        BibliographyFragment bibliographyFragment = new BibliographyFragment();
+        Bundle args = new Bundle();
+        args.putString("query", rawResult.toString());
+        bibliographyFragment.setArguments(args);
+        dismiss();
+        getFragmentManager()
+                .beginTransaction()
+                .replace(R.id.main_content_layout, bibliographyFragment)
+                .addToBackStack(null)
+                .commit();
         Toast.makeText(getActivity(), "Contents = " + rawResult.toString() +
                 "   |   Format = " + rawResult.getBarcodeFormat().toString(), Toast.LENGTH_SHORT).show();
         Handler handler = new Handler();
@@ -54,7 +65,7 @@ public class BarcodeScannerFragment extends DialogFragment implements ZXingScann
             public void run() {
                 mScannerView.resumeCameraPreview(BarcodeScannerFragment.this);
             }
-        }, 2000);
+        }, 5000);
     }
 
     @Override
