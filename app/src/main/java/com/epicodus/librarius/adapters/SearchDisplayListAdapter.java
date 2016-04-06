@@ -25,7 +25,7 @@ import butterknife.ButterKnife;
 /**
  * Created by Guest on 4/1/16.
  */
-public class SearchDisplayListAdapter extends RecyclerView.Adapter<SearchDisplayListAdapter.SearchDisplayViewHolder> {
+public class SearchDisplayListAdapter extends RecyclerView.Adapter<SearchDisplayViewHolder> {
     private ArrayList<Book> mBooks = new ArrayList<>();
     private Context mContext;
 
@@ -35,16 +35,17 @@ public class SearchDisplayListAdapter extends RecyclerView.Adapter<SearchDisplay
     }
 
     @Override
-    public SearchDisplayListAdapter.SearchDisplayViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public SearchDisplayViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.search_display_list_item, parent, false);
         SearchDisplayViewHolder viewHolder = new SearchDisplayViewHolder(view);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(SearchDisplayListAdapter.SearchDisplayViewHolder holder, int position) {
+    public void onBindViewHolder(SearchDisplayViewHolder holder, int position) {
         holder.bindBook(mBooks.get(position));
     }
+
 
     @Override
     public int getItemCount() {
@@ -53,32 +54,6 @@ public class SearchDisplayListAdapter extends RecyclerView.Adapter<SearchDisplay
 
 
 
-    public class SearchDisplayViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.searchDisplayTitleTextView) TextView mSearchDisplayTitleTextView;
-        @Bind(R.id.searchDisplayAuthorTextView) TextView mSearchDisplayAuthorTextView;
-        @Bind(R.id.searchDisplayPublisherTextView) TextView mSearchDisplayPublisherTextView;
-        private Context mContext;
 
-        public SearchDisplayViewHolder(View itemView) {
-            super(itemView);
-            mContext = itemView.getContext();
-            ButterKnife.bind(this, itemView);
-            itemView.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    //int itemPosition = getLayoutPosition();
-                    //TODO: save to firebase
-                    Toast.makeText(mContext, "You did it!", Toast.LENGTH_LONG).show();
-                }
-            });
-        }
-
-        public void bindBook(Book book) {
-            mSearchDisplayTitleTextView.setText(book.getBookTitle());
-            mSearchDisplayAuthorTextView.setText(book.getAuthorData());
-            mSearchDisplayPublisherTextView.setText(book.getPublisher());
-        }
-    }
 
 }
