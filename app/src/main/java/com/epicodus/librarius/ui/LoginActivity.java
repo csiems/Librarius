@@ -14,6 +14,8 @@ import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
+import java.util.Map;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -46,7 +48,7 @@ public class LoginActivity  extends AppCompatActivity implements View.OnClickLis
             loginWithPassword();
         }
         if (v == mRegisterButton) {
-            //register user
+            registerNewUser();
         }
     }
 
@@ -77,4 +79,23 @@ public class LoginActivity  extends AppCompatActivity implements View.OnClickLis
             | Intent.FLAG_ACTIVITY_NO_HISTORY);
         startActivity(intent);
     }
+
+    private void registerNewUser() {
+        final String email = mEmailEditText.getText().toString();
+        final String password = mPasswordEditText.getText().toString();
+
+        mFirebaseRef.createUser(email, password, new Firebase.ValueResultHandler<Map<String, Object>>() {
+            @Override
+            public void onSuccess(Map<String, Object> stringObjectMap) {
+                mFirebaseRef.authWithPassword(email, password, mAuthResultHandler);
+            }
+
+            @Override
+            public void onError(FirebaseError firebaseError) {
+                Log.d("Registration error", firebaseError.toString());
+            }
+        });
+    }
+
+
 }
