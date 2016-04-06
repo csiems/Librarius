@@ -33,7 +33,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-    private static final int MY_PERMISSIONS_REQUEST_CAMERA = 123;
+    private static final int MY_PERMISSIONS_REQUEST_CAMERA = 123; //dummy int to return during permissions check
     @Bind(R.id.scanButton) FloatingActionButton mScanButton;
     @Bind(R.id.searchButton) FloatingActionButton mSearchButton;
     @Bind(R.id.manualEntryButton) FloatingActionButton mManualEntryButton;
@@ -107,11 +107,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if (v == mScanButton) {
+            //permission check on Camera, if permission granted, do the thing
             int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
             if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
                 launchBarcodeScannerFragment();
             } else {
-                showMessageOKCancel("You need to allow access to Contacts",
+                // show notification as to why the scanner button won't work
+                showMessageOKCancel("You need to allow access to the camera to use that feature",
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -129,6 +131,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    //boiler plate function to handle request result, uses dummy int constant
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
@@ -144,12 +147,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             default:
                 super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-            // other 'case' lines to check for other
-            // permissions this app might request
+            // other 'case' lines to check for other permissions this app might request go below here
         }
     }
-
+    //custom dialog message to notify user why button doesn't work
     private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
         new AlertDialog.Builder(MainActivity.this)
                 .setMessage(message)
