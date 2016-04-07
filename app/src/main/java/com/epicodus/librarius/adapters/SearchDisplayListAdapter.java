@@ -16,6 +16,7 @@ import com.epicodus.librarius.fragments.BarcodeScannerFragment;
 import com.epicodus.librarius.fragments.BibliographyFragment;
 import com.epicodus.librarius.models.Book;
 import com.epicodus.librarius.ui.MainActivity;
+import com.epicodus.librarius.util.OnSearchedBookSelectedListener;
 
 import java.util.ArrayList;
 
@@ -27,11 +28,13 @@ import butterknife.ButterKnife;
  */
 public class SearchDisplayListAdapter extends RecyclerView.Adapter<SearchDisplayViewHolder> {
     private ArrayList<Book> mBooks = new ArrayList<>();
+    public SearchDisplayViewHolder viewHolder;
     private Context mContext;
+    private OnSearchedBookSelectedListener mOnSearchedBookSelectedListener;
 
-    public SearchDisplayListAdapter(Context context, ArrayList<Book> books) {
-        mContext = context;
+    public SearchDisplayListAdapter(ArrayList<Book> books, OnSearchedBookSelectedListener onSearchedBookSelectedListener) {
         mBooks = books;
+        mOnSearchedBookSelectedListener = onSearchedBookSelectedListener;
     }
 
     @Override

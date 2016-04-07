@@ -14,6 +14,7 @@ import com.epicodus.librarius.R;
 import com.epicodus.librarius.adapters.SearchDisplayListAdapter;
 import com.epicodus.librarius.models.Book;
 import com.epicodus.librarius.services.ISBNDBService;
+import com.epicodus.librarius.util.OnSearchedBookSelectedListener;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,10 +28,11 @@ import okhttp3.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SearchDisplayFragment extends DialogFragment {
+public class SearchDisplayFragment extends DialogFragment implements OnSearchedBookSelectedListener {
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     private SearchDisplayListAdapter mAdapter;
     public ArrayList<Book> mBooks = new ArrayList<>();
+    private Integer mPosition;
 
     public SearchDisplayFragment() {
         // Required empty public constructor
@@ -46,6 +48,12 @@ public class SearchDisplayFragment extends DialogFragment {
 
 
     @Override
+    public void onSearchedBookSelected(Integer position, ArrayList<Book> books) {
+        mPosition = position;
+        mBooks = books;
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -53,6 +61,7 @@ public class SearchDisplayFragment extends DialogFragment {
         ButterKnife.bind(this, view);
         return view;
     }
+
 
     private void getBooks(String query) {
         final ISBNDBService isbnDbService = new ISBNDBService(getContext());
@@ -80,7 +89,4 @@ public class SearchDisplayFragment extends DialogFragment {
             }
         });
     }
-
-
-
 }
