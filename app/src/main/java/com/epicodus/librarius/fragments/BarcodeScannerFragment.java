@@ -19,9 +19,6 @@ import com.google.zxing.Result;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class BarcodeScannerFragment extends DialogFragment implements ZXingScannerView.ResultHandler {
     private ZXingScannerView mScannerView;
 
@@ -38,7 +35,6 @@ public class BarcodeScannerFragment extends DialogFragment implements ZXingScann
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mScannerView = new ZXingScannerView(getActivity());
-
         return mScannerView;
     }
 
@@ -75,5 +71,17 @@ public class BarcodeScannerFragment extends DialogFragment implements ZXingScann
     public void onPause() {
         super.onPause();
         mScannerView.stopCamera();
+        dismiss();
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        dismiss();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        dismiss();
     }
 }

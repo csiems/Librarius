@@ -65,4 +65,21 @@ public class SearchFragment extends DialogFragment implements View.OnClickListen
                     .commit();
         }
     }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        dismiss();
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        dismiss();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        dismiss();
+    }
 }

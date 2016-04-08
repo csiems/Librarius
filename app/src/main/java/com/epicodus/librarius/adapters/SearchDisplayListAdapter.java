@@ -32,9 +32,9 @@ public class SearchDisplayListAdapter extends RecyclerView.Adapter<SearchDisplay
     private Context mContext;
     private OnSearchedBookSelectedListener mOnSearchedBookSelectedListener;
 
-    public SearchDisplayListAdapter(ArrayList<Book> books, OnSearchedBookSelectedListener onSearchedBookSelectedListener) {
+    public SearchDisplayListAdapter(Context context, ArrayList<Book> books) {
         mBooks = books;
-        mOnSearchedBookSelectedListener = onSearchedBookSelectedListener;
+        mContext = context;
     }
 
     @Override

@@ -79,7 +79,7 @@ public class SearchDisplayFragment extends DialogFragment implements OnSearchedB
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        mAdapter = new SearchDisplayListAdapter(getActivity().getApplicationContext(), mBooks);
+                        mAdapter = new SearchDisplayListAdapter(getContext(), mBooks);
                         mRecyclerView.setAdapter(mAdapter);
                         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
                         mRecyclerView.setLayoutManager(layoutManager);
@@ -88,5 +88,22 @@ public class SearchDisplayFragment extends DialogFragment implements OnSearchedB
                 });
             }
         });
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        dismiss();
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        dismiss();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        dismiss();
     }
 }

@@ -104,8 +104,8 @@ public class LoginActivity  extends AppCompatActivity implements View.OnClickLis
         mAuthResultHandler = new Firebase.AuthResultHandler() {
             @Override
             public void onAuthenticated(AuthData authData) {
-                goToMainActivity();
                 mAuthProgressDialog.hide();
+                goToMainActivity();
             }
 
             @Override

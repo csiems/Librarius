@@ -81,4 +81,21 @@ public class ManualEntryFormFragment extends DialogFragment implements View.OnCl
                     .commit();
         }
     }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        dismiss();
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        dismiss();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        dismiss();
+    }
 }

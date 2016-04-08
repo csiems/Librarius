@@ -46,13 +46,14 @@ public class BibliographyFragment extends Fragment {
         // Required empty public constructor
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_bibliography, container, false);
         ButterKnife.bind(this, view);
 
-        Firebase.setAndroidContext(getActivity().getApplicationContext());
+        Firebase.setAndroidContext(getContext());
         mFirebaseRef = LibrariusApplication.getAppInstance().getFirebaseRef();
 
         setUpFirebaseQuery();
@@ -68,5 +69,7 @@ public class BibliographyFragment extends Fragment {
     private void setUpRecyclerView() {
         
     }
+
+
 }
 
