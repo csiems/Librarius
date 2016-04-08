@@ -3,7 +3,6 @@ package com.epicodus.librarius.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.epicodus.librarius.R;
-import com.epicodus.librarius.adapters.SearchDisplayListAdapter;
+import com.epicodus.librarius.adapters.BookListAdapter;
 import com.epicodus.librarius.models.Book;
 import com.epicodus.librarius.services.ISBNDBService;
 import com.epicodus.librarius.util.OnSearchedBookSelectedListener;
@@ -25,14 +24,13 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class SearchDisplayFragment extends DialogFragment implements OnSearchedBookSelectedListener {
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
-    private SearchDisplayListAdapter mAdapter;
+    private BookListAdapter mAdapter;
     public ArrayList<Book> mBooks = new ArrayList<>();
     private Integer mPosition;
+
 
     public SearchDisplayFragment() {
         // Required empty public constructor
@@ -64,6 +62,7 @@ public class SearchDisplayFragment extends DialogFragment implements OnSearchedB
 
 
     private void getBooks(String query) {
+
         final ISBNDBService isbnDbService = new ISBNDBService(getContext());
 
         isbnDbService.findBooks(query, new Callback() {
@@ -79,7 +78,7 @@ public class SearchDisplayFragment extends DialogFragment implements OnSearchedB
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        mAdapter = new SearchDisplayListAdapter(getContext(), mBooks);
+                        mAdapter = new BookListAdapter(getContext(), mBooks);
                         mRecyclerView.setAdapter(mAdapter);
                         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
                         mRecyclerView.setLayoutManager(layoutManager);

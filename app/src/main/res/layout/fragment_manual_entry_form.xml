@@ -16,6 +16,7 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:padding="20dp"
             android:id="@+id/manualEntryLinearLayout">
             <com.epicodus.librarius.helpers.BoldTextView
                 android:id="@+id/TextViewTitle"
@@ -23,6 +24,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/instructionsTitle"
                 android:textSize="10pt"
+                android:padding="10dp"
+                android:layout_margin="10dp"
                 android:textAlignment="center" />
             <com.epicodus.librarius.helpers.PrimaryEditText
                 android:id="@+id/authorFirstNameEditText"
@@ -30,6 +33,8 @@
                 android:textColorHint="@color/colorAccent"
                 android:hint="@string/authorFirstName"
                 android:inputType="textPersonName"
+                android:padding="10dp"
+                android:layout_margin="10dp"
                 android:layout_width="fill_parent"
                 android:linksClickable="true"/>
             <com.epicodus.librarius.helpers.PrimaryEditText
@@ -37,6 +42,8 @@
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/colorAccent"
                 android:hint="@string/authorLastName"
+                android:padding="10dp"
+                android:layout_margin="10dp"
                 android:inputType="textPersonName"
                 android:layout_width="fill_parent"/>
             <com.epicodus.librarius.helpers.PrimaryEditText
@@ -44,6 +51,8 @@
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/colorAccent"
                 android:hint="@string/bookTitle"
+                android:padding="10dp"
+                android:layout_margin="10dp"
                 android:inputType="textPersonName"
                 android:layout_width="fill_parent"/>
             <com.epicodus.librarius.helpers.BoldTextView
@@ -51,6 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:padding="10dp"
                 android:text="@string/advancedInfo"
                 android:textSize="10pt"/>
 
@@ -60,6 +70,8 @@
                 android:textColorHint="@color/colorAccent"
                 android:hint="@string/bookVol"
                 android:inputType="textPersonName"
+                android:padding="10dp"
+                android:layout_margin="10dp"
                 android:layout_width="fill_parent"/>
             <com.epicodus.librarius.helpers.PrimaryEditText
                 android:id="@+id/bookEdEditText"
@@ -67,6 +79,8 @@
                 android:textColorHint="@color/colorAccent"
                 android:hint="@string/bookEd"
                 android:inputType="textPersonName"
+                android:padding="10dp"
+                android:layout_margin="10dp"
                 android:layout_width="fill_parent" />
             <com.epicodus.librarius.helpers.PrimaryEditText
                 android:id="@+id/bookSeriesEditText"
@@ -74,12 +88,15 @@
                 android:textColorHint="@color/colorAccent"
                 android:hint="@string/bookSeries"
                 android:inputType="textPersonName"
+                android:padding="10dp"
+                android:layout_margin="10dp"
                 android:layout_width="fill_parent"/>
             <com.epicodus.librarius.helpers.BoldTextView
                 android:id="@+id/publicationInfoTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:padding="10dp"
                 android:text="@string/publicationInfo"
                 android:textSize="10pt"/>
             <com.epicodus.librarius.helpers.PrimaryEditText
@@ -88,6 +105,8 @@
                 android:textColorHint="@color/colorAccent"
                 android:hint="@string/bookPublisher"
                 android:inputType="textPersonName"
+                android:padding="10dp"
+                android:layout_margin="10dp"
                 android:layout_width="fill_parent"/>
             <com.epicodus.librarius.helpers.PrimaryEditText
                 android:id="@+id/bookCityEditText"
@@ -95,6 +114,8 @@
                 android:textColorHint="@color/colorAccent"
                 android:hint="@string/bookCity"
                 android:inputType="textPersonName"
+                android:padding="10dp"
+                android:layout_margin="10dp"
                 android:layout_width="fill_parent"/>
             <com.epicodus.librarius.helpers.PrimaryEditText
                 android:id="@+id/bookYearEditText"
@@ -102,6 +123,8 @@
                 android:textColorHint="@color/colorAccent"
                 android:hint="@string/bookYear"
                 android:inputType="textPersonName"
+                android:padding="10dp"
+                android:layout_margin="10dp"
                 android:layout_width="fill_parent"/>
 
             <Button
@@ -109,8 +132,8 @@
                 android:layout_height="wrap_content"
                 android:text="Submit"
                 android:id="@+id/submitNewButton"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
+                android:textColor="@color/colorTextIcons"
+                android:layout_margin="10dp"
                 android:background="@color/colorPrimaryDark" />
 
         </LinearLayout>

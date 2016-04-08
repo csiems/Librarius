@@ -1,6 +1,6 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.SearchDisplayFragment">
 
@@ -8,14 +8,6 @@
         android:orientation="vertical" android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/button_material_light">
-
-        <com.epicodus.librarius.helpers.BoldTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            android:text="Click on a panel to add it to your bibliography."
-            />
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"

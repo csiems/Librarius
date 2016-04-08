@@ -20,10 +20,8 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-/**
- * Created by Guest on 4/5/16.
-*/
-public class SearchDisplayViewHolder extends RecyclerView.ViewHolder {
+
+public class BookViewHolder extends RecyclerView.ViewHolder {
     @Bind(R.id.searchDisplayTitleTextView)
     TextView mSearchDisplayTitleTextView;
     @Bind(R.id.searchDisplayAuthorTextView) TextView mSearchDisplayAuthorTextView;
@@ -35,7 +33,7 @@ public class SearchDisplayViewHolder extends RecyclerView.ViewHolder {
     private String mCurrentUserUid;
 
 
-    public SearchDisplayViewHolder(View itemView, ArrayList<Book> books) {
+    public BookViewHolder(View itemView, ArrayList<Book> books) {
         super(itemView);
         mContext = itemView.getContext();
         mBooks = books;
