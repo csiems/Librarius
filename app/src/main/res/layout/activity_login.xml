@@ -5,7 +5,8 @@ xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context="com.epicodus.librarius.ui.LoginActivity"
-android:background="@color/colorPrimary">
+android:background="@color/colorPrimary"
+    android:padding="20dp">
 
 <TextView
     android:layout_width="match_parent"
@@ -45,6 +46,7 @@ android:background="@color/colorPrimary">
         android:hint="Email"
         android:textColorHint="@color/colorTextIcons"
         android:layout_marginTop="30dp"
+        android:padding="10dp"
         android:textSize="20sp"/>
 
     <EditText

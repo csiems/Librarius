@@ -50,8 +50,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mFirebaseRef = LibrariusApplication.getAppInstance().getFirebaseRef();
         checkForAuthenticatedUser();
 
-        //TODO: Figure out how to ask for camera permissions in app.
-
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
