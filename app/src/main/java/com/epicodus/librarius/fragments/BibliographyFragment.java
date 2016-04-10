@@ -13,6 +13,7 @@ import com.epicodus.librarius.LibrariusApplication;
 import com.epicodus.librarius.adapters.FirebaseBookListAdapter;
 import com.epicodus.librarius.R;
 import com.epicodus.librarius.models.Book;
+import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
 import com.firebase.client.Query;
 
@@ -40,8 +41,11 @@ public class BibliographyFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mFirebaseRef = LibrariusApplication.getAppInstance().getFirebaseRef();
-        mCurrentUserUid = mFirebaseRef.getAuth().getUid();
-        setUpFirebaseQuery();
+        AuthData authData = mFirebaseRef.getAuth();
+        if (authData != null) {
+            mCurrentUserUid = mFirebaseRef.getAuth().getUid();
+            setUpFirebaseQuery();
+        }
     }
 
 

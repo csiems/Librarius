@@ -6,4 +6,5 @@
     <color name="colorPrimaryDark">#001D4A</color>
     <color name="colorAccent">#ECA400</color>
     <color name="colorTextIcons">#eaf8bf</color>
+    <color name="splash_background">#77006992</color>
 </resources>
