@@ -9,31 +9,42 @@
 
 
     <LinearLayout
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:background="#ffffff"
         android:layout_height="match_parent"
-        android:padding="10dp"
         android:id="@+id/searchDisplayLinearLayout"
+        android:textSize="20sp"
         >
-
-        <com.epicodus.librarius.helpers.BoldTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/searchDisplayTitleTextView"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:text="Book Title"
-            android:textColor="@color/colorPrimary"
-            android:layout_marginBottom="4dp"
-            />
 
         <com.epicodus.librarius.helpers.PrimaryTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Author Name(s)"
-            android:id="@+id/searchDisplayAuthorTextView"
-            android:layout_margin="3dp"
+            android:id="@+id/bibliographyAuthorTextView"
+            android:textSize="20sp"
+            />
+
+        <com.epicodus.librarius.helpers.PrimaryTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=". "
+            android:textSize="20sp"
+            />
+
+        <com.epicodus.librarius.helpers.PrimaryTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Book Title"
+            android:textStyle="italic"
+            android:id="@+id/bibliographyTitleTextView"
+            android:textSize="20sp"
+            />
+        <com.epicodus.librarius.helpers.PrimaryTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=". "
+            android:textSize="20sp"
             />
 
         <com.epicodus.librarius.helpers.PrimaryTextView
@@ -41,8 +52,16 @@
             android:layout_height="wrap_content"
             android:text="Publisher Info"
             android:id="@+id/searchDisplayPublisherTextView"
-            android:layout_margin="3dp"
+            android:textSize="20sp"
             />
+
+        <com.epicodus.librarius.helpers.PrimaryTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="."
+            android:textSize="20sp"
+            />
+
 
 
     </LinearLayout>

@@ -1,8 +1,6 @@
 package com.epicodus.librarius.adapters;
 
 import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
@@ -22,9 +20,9 @@ import butterknife.ButterKnife;
 
 
 public class BookViewHolder extends RecyclerView.ViewHolder {
-    @Bind(R.id.searchDisplayTitleTextView)
+    @Bind(R.id.bibliographyTitleTextView)
     TextView mSearchDisplayTitleTextView;
-    @Bind(R.id.searchDisplayAuthorTextView) TextView mSearchDisplayAuthorTextView;
+    @Bind(R.id.bibliographyAuthorTextView) TextView mSearchDisplayAuthorTextView;
     @Bind(R.id.searchDisplayPublisherTextView) TextView mSearchDisplayPublisherTextView;
     private Context mContext;
     private ArrayList<Book> mBooks = new ArrayList<>();

@@ -32,7 +32,6 @@ public class ISBNDBService {
 
     public void findBooks(String searchTerm, Callback callback) {
         String API_KEY = mContext.getString(R.string.API_KEY);
-
         OkHttpClient client = new OkHttpClient.Builder().build();
 
         HttpUrl.Builder urlBuilder = HttpUrl.parse("http://isbndb.com/api/v2/json/" + API_KEY + "/books").newBuilder();
