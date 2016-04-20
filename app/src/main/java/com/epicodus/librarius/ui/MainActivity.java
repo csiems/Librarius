@@ -25,6 +25,7 @@ import com.epicodus.librarius.fragments.BarcodeScannerFragment;
 import com.epicodus.librarius.fragments.ManualEntryFormFragment;
 import com.epicodus.librarius.R;
 import com.epicodus.librarius.fragments.BibliographyFragment;
+import com.epicodus.librarius.fragments.SearchDisplayFragment;
 import com.epicodus.librarius.fragments.SearchFragment;
 import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
@@ -32,7 +33,7 @@ import com.firebase.client.Firebase;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, BarcodeScannerFragment.OnBarcodeScannedListener{
     private static final int MY_PERMISSIONS_REQUEST_CAMERA = 123; //dummy int to return during permissions check
     @Bind(R.id.scanButton) FloatingActionButton mScanButton;
     @Bind(R.id.searchButton) FloatingActionButton mSearchButton;
@@ -174,5 +175,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         FragmentManager fm = getSupportFragmentManager();
         ManualEntryFormFragment manualEntryForm = ManualEntryFormFragment.newInstance();
         manualEntryForm.show(fm, "fragment_manual_entry_form");
+    }
+
+
+    @Override
+    public void onBarcodeScanned(String rawResult) {
+        SearchDisplayFragment searchDisplayFragment = new SearchDisplayFragment();
+        Bundle args = new Bundle();
+        args.putString("query", rawResult);
+        searchDisplayFragment.setArguments(args);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.main_content_layout, searchDisplayFragment)
+                .commit();
     }
 }

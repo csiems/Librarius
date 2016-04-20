@@ -2,6 +2,7 @@ package com.epicodus.librarius.fragments;
 
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -21,7 +22,7 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 public class BarcodeScannerFragment extends DialogFragment implements ZXingScannerView.ResultHandler {
     private ZXingScannerView mScannerView;
-
+    private OnBarcodeScannedListener mListener;
 
     public BarcodeScannerFragment() {
         // Required empty public constructor
@@ -29,6 +30,23 @@ public class BarcodeScannerFragment extends DialogFragment implements ZXingScann
 
     public static BarcodeScannerFragment newInstance() {
         return new BarcodeScannerFragment();
+    }
+
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            mListener = (OnBarcodeScannedListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() + " must implement OnBarcodeScannedListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
     }
 
 
@@ -47,17 +65,11 @@ public class BarcodeScannerFragment extends DialogFragment implements ZXingScann
 
     @Override
     public void handleResult(Result rawResult) {
-        SearchDisplayFragment searchDisplayFragment = new SearchDisplayFragment();
-        Bundle args = new Bundle();
-        args.putString("query", rawResult.toString());
-        searchDisplayFragment.setArguments(args);
-        dismiss();
-        getFragmentManager()
-                .beginTransaction()
-                .replace(R.id.main_content_layout, searchDisplayFragment)
-                .addToBackStack(null)
-                .commit();
 
+        if (mListener != null) {
+            mListener.onBarcodeScanned(rawResult.toString());
+        }
+        dismiss();
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -83,5 +95,9 @@ public class BarcodeScannerFragment extends DialogFragment implements ZXingScann
     public void onDestroy() {
         super.onDestroy();
         dismiss();
+    }
+
+    public interface OnBarcodeScannedListener {
+        void onBarcodeScanned(String rawResult);
     }
 }
