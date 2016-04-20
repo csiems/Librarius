@@ -1,6 +1,7 @@
 package com.epicodus.librarius.fragments;
 
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
@@ -23,6 +24,8 @@ import butterknife.ButterKnife;
 public class SearchFragment extends DialogFragment implements View.OnClickListener {
     @Bind(R.id.submitSearchButton) Button mSubmitSearchButton;
     @Bind(R.id.queryEditText) EditText mQueryEditText;
+    private OnBookSearchedListener mListener;
+
 
     public SearchFragment() {
         // Required empty public constructor
@@ -32,6 +35,22 @@ public class SearchFragment extends DialogFragment implements View.OnClickListen
         return new SearchFragment();
     }
 
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            mListener = (OnBookSearchedListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() + " must implement OnBookSearchedListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,16 +72,10 @@ public class SearchFragment extends DialogFragment implements View.OnClickListen
     @Override
     public void onClick(View v) {
         if (v == mSubmitSearchButton) {
-            SearchDisplayFragment searchDisplayFragment = new SearchDisplayFragment();
-            Bundle args = new Bundle();
-            args.putString("query", mQueryEditText.getText().toString());
-            searchDisplayFragment.setArguments(args);
-            dismiss();
-            getFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.main_content_layout, searchDisplayFragment)
-                    .addToBackStack(null)
-                    .commit();
+            if (mListener != null) {
+                mListener.onBookSearched(mQueryEditText.getText().toString());
+                dismiss();
+            }
         }
     }
 
@@ -81,5 +94,9 @@ public class SearchFragment extends DialogFragment implements View.OnClickListen
     public void onDestroy() {
         super.onDestroy();
         dismiss();
+    }
+
+    public interface OnBookSearchedListener {
+        void onBookSearched(String isbn);
     }
 }

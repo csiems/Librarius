@@ -33,7 +33,7 @@ import com.firebase.client.Firebase;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, BarcodeScannerFragment.OnBarcodeScannedListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, BarcodeScannerFragment.OnBarcodeScannedListener, SearchFragment.OnBookSearchedListener{
     private static final int MY_PERMISSIONS_REQUEST_CAMERA = 123; //dummy int to return during permissions check
     @Bind(R.id.scanButton) FloatingActionButton mScanButton;
     @Bind(R.id.searchButton) FloatingActionButton mSearchButton;
@@ -188,4 +188,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .replace(R.id.main_content_layout, searchDisplayFragment)
                 .commit();
     }
+
+    SearchDisplayFragment searchDisplayFragment = new SearchDisplayFragment();
+
+    @Override
+    public void onBookSearched(String isbn) {
+        Bundle args = new Bundle();
+        args.putString("query", isbn);
+        searchDisplayFragment.setArguments(args);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.main_content_layout, searchDisplayFragment)
+                .commit();
+    }
+
 }
