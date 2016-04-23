@@ -1,6 +1,7 @@
 package com.epicodus.librarius.fragments;
 
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.epicodus.librarius.R;
+import com.epicodus.librarius.databinding.FragmentManualEntryFormBinding;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -21,17 +23,7 @@ import butterknife.ButterKnife;
  * A simple {@link Fragment} subclass.
  */
 public class ManualEntryFormFragment extends DialogFragment implements View.OnClickListener {
-
-    @Bind(R.id.submitNewButton) Button mSubmitNewButton;
-    @Bind(R.id.authorFirstNameEditText) EditText mAuthorFirstName;
-    @Bind(R.id.authorLastNameEditText) EditText mAuthorLastName;
-    @Bind(R.id.bookTitleEditText) EditText mBookTitle;
-    @Bind(R.id.bookVolEditText) EditText mBookVol;
-    @Bind(R.id.bookEdEditText) EditText mBookEd;
-    @Bind(R.id.bookSeriesEditText) EditText mBookSeries;
-    @Bind(R.id.publisherEditText) EditText mPublisher;
-    @Bind(R.id.bookCityEditText) EditText mBookCity;
-    @Bind(R.id.bookYearEditText) EditText mBookYear;
+    private FragmentManualEntryFormBinding mBinding;
 
     public ManualEntryFormFragment() {
         // Required empty public constructor
@@ -46,10 +38,9 @@ public class ManualEntryFormFragment extends DialogFragment implements View.OnCl
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_manual_entry_form, container, false);
-        ButterKnife.bind(this, view);
-        mSubmitNewButton.setOnClickListener(this);
-        return view;
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_manual_entry_form, container, false);
+        mBinding.submitNewButton.setOnClickListener(this);
+        return mBinding.getRoot();
     }
 
     @Override
@@ -60,18 +51,18 @@ public class ManualEntryFormFragment extends DialogFragment implements View.OnCl
     //ON CLICK LISTENER(S)
     @Override
     public void onClick(View v) {
-        if (v == mSubmitNewButton) {
+        if (v == mBinding.submitNewButton) {
             BibliographyFragment bibliographyFragment = new BibliographyFragment();
             Bundle args = new Bundle();
-            args.putString("authorFirstName", mAuthorFirstName.getText().toString());
-            args.putString("authorLastName", mAuthorLastName.getText().toString());
-            args.putString("bookTitle", mBookTitle.getText().toString());
-            args.putString("bookVol", mBookVol.getText().toString());
-            args.putString("bookEd", mBookEd.getText().toString());
-            args.putString("bookSeries", mBookSeries.getText().toString());
-            args.putString("bookPublisher", mPublisher.getText().toString());
-            args.putString("bookYear", mBookYear.getText().toString());
-            args.putString("bookCity", mBookCity.getText().toString());
+            args.putString("authorFirstName", mBinding.authorFirstNameEditText.getText().toString());
+            args.putString("authorLastName", mBinding.authorLastNameEditText.getText().toString());
+            args.putString("bookTitle", mBinding.bookTitleEditText.getText().toString());
+            args.putString("bookVol", mBinding.bookVolEditText.getText().toString());
+            args.putString("bookEd", mBinding.bookEdEditText.getText().toString());
+            args.putString("bookSeries", mBinding.bookSeriesEditText.getText().toString());
+            args.putString("bookPublisher", mBinding.bookCityEditText.getText().toString());
+            args.putString("bookYear", mBinding.bookYearEditText.getText().toString());
+            args.putString("bookCity", mBinding.bookCityEditText.getText().toString());
             bibliographyFragment.setArguments(args);
             dismiss();
             getFragmentManager()

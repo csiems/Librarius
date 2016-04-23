@@ -1,42 +1,43 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/searchForm"
-    android:layout_width="wrap_content" android:layout_height="wrap_content"
-    android:layout_gravity="center" android:orientation="vertical"  >
-
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/searchLinearLayout"
-        android:padding="20dp">
-        <com.epicodus.librarius.helpers.BoldTextView
-            android:id="@+id/searchInstructionsTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/searchInstructionsTitle"
-            android:textSize="10pt"
-            android:textAlignment="center"
-            android:padding="10dp"
-            android:layout_margin="10dp"/>
-        <com.epicodus.librarius.helpers.PrimaryEditText
-            android:id="@+id/queryEditText"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/colorAccent"
-            android:hint="@string/searchHint"
-            android:layout_width="fill_parent"
-            android:layout_margin="10dp"
-            android:padding="10dp"
-            android:linksClickable="true"/>
-        <Button
+        android:id="@+id/searchForm"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_gravity="center" android:orientation="vertical"  >
+
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Submit"
-            android:id="@+id/submitSearchButton"
-            android:layout_margin="10dp"
-            android:background="@color/colorPrimaryDark"
-            android:textColor="@color/colorTextIcons" />
+            android:layout_height="match_parent"
+            android:id="@+id/searchLinearLayout"
+            android:padding="20dp">
+            <com.epicodus.librarius.helpers.BoldTextView
+                android:id="@+id/searchInstructionsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/searchInstructionsTitle"
+                android:textSize="10pt"
+                android:textAlignment="center"
+                android:padding="10dp"
+                android:layout_margin="10dp"/>
+            <com.epicodus.librarius.helpers.PrimaryEditText
+                android:id="@+id/queryEditText"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/colorAccent"
+                android:hint="@string/searchHint"
+                android:layout_width="fill_parent"
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                android:linksClickable="true"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Submit"
+                android:id="@+id/submitSearchButton"
+                android:layout_margin="10dp"
+                android:background="@color/colorPrimaryDark"
+                android:textColor="@color/colorTextIcons" />
+
+        </LinearLayout>
 
     </LinearLayout>
-
-
-</LinearLayout>
+</layout>

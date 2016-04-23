@@ -2,6 +2,7 @@ package com.epicodus.librarius.fragments;
 
 
 import android.app.Activity;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
@@ -14,6 +15,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.epicodus.librarius.R;
+import com.epicodus.librarius.databinding.FragmentSearchBinding;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -22,10 +24,8 @@ import butterknife.ButterKnife;
  * A simple {@link Fragment} subclass.
  */
 public class SearchFragment extends DialogFragment implements View.OnClickListener {
-    @Bind(R.id.submitSearchButton) Button mSubmitSearchButton;
-    @Bind(R.id.queryEditText) EditText mQueryEditText;
+    private FragmentSearchBinding mBinding;
     private OnBookSearchedListener mListener;
-
 
     public SearchFragment() {
         // Required empty public constructor
@@ -56,10 +56,9 @@ public class SearchFragment extends DialogFragment implements View.OnClickListen
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_search, container, false);
-        ButterKnife.bind(this, view);
-        mSubmitSearchButton.setOnClickListener(this);
-        return view;
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_search, container, false);
+        mBinding.submitSearchButton.setOnClickListener(this);
+        return mBinding.getRoot();
     }
 
     @Override
@@ -71,9 +70,9 @@ public class SearchFragment extends DialogFragment implements View.OnClickListen
     //ON CLICK LISTENER(S)
     @Override
     public void onClick(View v) {
-        if (v == mSubmitSearchButton) {
+        if (v == mBinding.submitSearchButton) {
             if (mListener != null) {
-                mListener.onBookSearched(mQueryEditText.getText().toString());
+                mListener.onBookSearched(mBinding.queryEditText.getText().toString());
                 dismiss();
             }
         }
